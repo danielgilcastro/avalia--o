@@ -30,9 +30,12 @@ tbody tr:hover {
 	transition: background 0.2s, color 0.2s;
 }
 
-
+/* Responsividade para telas menores */
 @media (max-width: 900px) {
-
+	.table-responsive {
+		width: 100%;
+		overflow-x: auto;
+	}
 	table,
 	thead,
 	tbody,
@@ -42,29 +45,25 @@ tbody tr:hover {
 		display: block;
 		width: 100%;
 	}
-
+	thead {
+		display: none;
+	}
+	tr {
+		margin-bottom: 16px;
+		border-bottom: 1px solid #e0e0e0;
+	}
 	th,
 	td {
 		padding: 10px 6px;
 		font-size: 0.98rem;
 	}
-
-	thead {
-		display: none;
-	}
-
-	tr {
-		margin-bottom: 16px;
-		border-bottom: 1px solid #e0e0e0;
-	}
-
 	td {
 		border: none;
 		position: relative;
 		padding-left: 50%;
 		min-height: 32px;
+		word-break: break-word;
 	}
-
 	td:before {
 		position: absolute;
 		left: 10px;
@@ -74,5 +73,29 @@ tbody tr:hover {
 		font-weight: 600;
 		color: var(--primary-dark);
 		content: attr(data-label);
+	}
+}
+
+@media (max-width: 600px) {
+	.table-responsive {
+		width: 100%;
+		overflow-x: auto;
+	}
+	table {
+		font-size: 0.95rem;
+		box-shadow: none;
+		border-radius: 0;
+	}
+	th, td {
+		font-size: 0.95rem;
+		padding: 8px 4px;
+	}
+	tr {
+		margin-bottom: 10px;
+	}
+	td:before {
+		font-size: 0.95rem;
+		left: 4px;
+		top: 6px;
 	}
 }

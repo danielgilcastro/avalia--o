@@ -57,3 +57,20 @@ img {
 .ng-valid {
     border: 1px solid var(--success-color);
 }
+
+/* Responsividade global para mobile */
+@media (max-width: 600px) {
+    html, body {
+        font-size: 15px;
+        padding: 0;
+    }
+    .layout-container, .content-container, form, table {
+        padding: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+    .content-container {
+        max-width: 100vw !important;
+        min-width: 0 !important;
+    }
+}
