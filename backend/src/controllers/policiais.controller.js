@@ -19,10 +19,9 @@ export const criarPolicial = async (req, res) => {
         req.body.matricula = await bcrypt.hash(req.body.matricula, salt);
     }
 
-    // const cpfValidator = ValidateCPF();
-    // if (!cpfValidator.isValid(req.body.cpf)) {
-    //     return res.status(400).json({ error: 'CPF inválido' });
-    // }
+    if (!ValidateCPF(req.body.cpf)) {
+        return res.status(400).json({ error: 'CPF inválido.' });
+    }
 
     try {
         const novoPolicial = await PoliciaisService.criarPolicial(req.body);
