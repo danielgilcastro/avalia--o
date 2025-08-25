@@ -19,16 +19,24 @@ export const criarPolicial = async (req, res) => {
         req.body.matricula = await bcrypt.hash(req.body.matricula, salt);
     }
 
-    const cpfValidator = ValidateCPF();
-
-    if (!cpfValidator.isValid(req.body.cpf)) {
-        return res.status(400).json({ error: 'CPF inválido' });
-    }
+    // const cpfValidator = ValidateCPF();
+    // if (!cpfValidator.isValid(req.body.cpf)) {
+    //     return res.status(400).json({ error: 'CPF inválido' });
+    // }
 
     try {
         const novoPolicial = await PoliciaisService.criarPolicial(req.body);
         res.status(201).json(novoPolicial);
     } catch (error) {
-        res.status(400).json({ error: 'Bad Request' });
+        if (error.code === 'ER_DUP_ENTRY') {
+            return res.status(409).json({ error: 'Registro duplicado: já existe um policial com esses dados.' });
+        }
+        if (error.sqlMessage && error.sqlMessage.includes('cannot be null')) {
+            return res.status(400).json({ error: 'Campos obrigatórios não preenchidos.' });
+        }
+        if (error.sqlMessage) {
+            return res.status(400).json({ error: error.sqlMessage });
+        }
+        res.status(500).json({ error: 'Erro ao criar policial' });
     }
 };
