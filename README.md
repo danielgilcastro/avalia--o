@@ -86,6 +86,3 @@ Acesse a interface em `http://localhost:4200`.
 - O projeto segue boas práticas de separação de responsabilidades.
 - O código está comentado para facilitar a compreensão.
 - Testes unitários podem ser executados via `npm test` em cada parte.
-
-## Contato
-Dúvidas ou sugestões: [Seu Nome] - [Seu Email]
