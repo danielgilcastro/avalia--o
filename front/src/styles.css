@@ -49,3 +49,11 @@ img {
     --warning-color: #fbc02d;
     --info-color: #0288d1;
 }
+
+.ng-invalid {
+    border: 1px solid var(--error-color) !important;
+}
+
+.ng-valid {
+    border: 1px solid var(--success-color);
+}

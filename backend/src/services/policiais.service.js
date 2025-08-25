@@ -3,7 +3,7 @@ const db = require('../database/modulemysql2'); // ajuste o caminho conforme seu
 class PoliciaisService {
     async listarTodos() {
         return new Promise((resolve, reject) => {
-            db.pool.query('SELECT * FROM policiais', (error, results) => {
+            db.pool.query('SELECT * FROM policiais order by id desc', (error, results) => {
                 if (error) {
                     return reject(error);
                 }
