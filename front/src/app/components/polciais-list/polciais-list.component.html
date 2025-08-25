@@ -1,0 +1,11 @@
+
+
+@for ( policial of policiaisService.policiaisList; track policial.id) {
+  <div>
+    <h3>{{ policial.nome }}</h3>
+    <p>RG Civil: {{ policial.rg_civil }}</p>
+    <p>RG Militar: {{ policial.rg_militar }}</p>
+    <p>CPF: {{ policial.cpf }}</p>
+    <p>Data de Nascimento: {{ policial.data_nascimento | date:'dd/MM/yyyy' }}</p>
+  </div>
+}

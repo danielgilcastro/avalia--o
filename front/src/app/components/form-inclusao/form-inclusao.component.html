@@ -1,0 +1,24 @@
+
+<form [formGroup]="form" (ngSubmit)="criarPolicial()">
+    <div>
+        <label for="rg_civil">RG Civil:</label>
+        <input id="rg_civil" type="text" formControlName="rg_civil">
+    </div>
+    <div>
+        <label for="rg_militar">RG Militar:</label>
+        <input id="rg_militar" type="text" formControlName="rg_militar">
+    </div>
+    <div>
+        <label for="cpf">CPF:</label>
+        <input id="cpf" type="text" formControlName="cpf">
+    </div>
+    <div>
+        <label for="data_nascimento">Data de Nascimento:</label>
+        <input id="data_nascimento" type="date" formControlName="data_nascimento">
+    </div>
+    <div>
+        <label for="matricula">Matrícula:</label>
+        <input id="matricula" type="text" formControlName="matricula">
+    </div>
+    <button type="submit" [disabled]="form.invalid">Enviar</button>
+</form>
