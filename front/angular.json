@@ -68,7 +68,9 @@
               "buildTarget": "front:build:production"
             },
             "development": {
-              "buildTarget": "front:build:development"
+              "buildTarget": "front:build:development",
+              "host": "0.0.0.0",
+              "disableHostCheck": true
             }
           },
           "defaultConfiguration": "development"

@@ -12,6 +12,27 @@ export const listarTodosPoliciais = async (req, res) => {
     }
 };
 
+
+export const obterPolicialPorCPF = async (req, res) => {
+
+    const { cpf } = req.params;
+
+    if (!cpf || !ValidateCPF(cpf)) {
+        return res.status(400).json({ error: 'CPF inválido.' });
+    }
+
+
+    try {
+        const policial = await PoliciaisService.obterPolicialPorCPF(cpf);
+        if (!policial) {
+            return res.status(404).json({ error: 'Policial não encontrado.' });
+        }
+        res.json(policial);
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao buscar policial por CPF' });
+    }
+};
+
 // Cria um novo policial
 export const criarPolicial = async (req, res) => {
     if (req.body && req.body.matricula) {

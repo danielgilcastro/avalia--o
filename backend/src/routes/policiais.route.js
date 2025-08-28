@@ -1,9 +1,11 @@
 import express from 'express';
-import { listarTodosPoliciais, criarPolicial } from '../controllers/policiais.controller.js';
+import { listarTodosPoliciais, criarPolicial ,obterPolicialPorCPF} from '../controllers/policiais.controller.js';
 
 const PoliciaisRoutes = express.Router();
 
 PoliciaisRoutes.get('/policiais', listarTodosPoliciais);
+
+PoliciaisRoutes.get('/policiais/:cpf', obterPolicialPorCPF);
 
 PoliciaisRoutes.post('/policiais', criarPolicial);
 

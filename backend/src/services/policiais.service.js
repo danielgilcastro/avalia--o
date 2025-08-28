@@ -34,6 +34,18 @@ class PoliciaisService {
     }
 
 
+    async obterPolicialPorCPF(cpf) {
+        return new Promise((resolve, reject) => {
+            const sql = 'SELECT * FROM policiais WHERE cpf = ? LIMIT 1';
+            db.pool.query(sql, [cpf], (error, results) => {
+                if (error) {
+                    return reject(error);
+                }
+                resolve(results[0] || null);
+            });
+        });
+    }
+
 
 }
 
