@@ -18,6 +18,13 @@ export class PolciaisListComponent implements OnInit {
   ngOnInit() {
     this.policiaisService.getPoliciais();
   }
+  
+
+  getPolicialByCpf(cpf: string){
+    this.policiaisService.getPolicialByCpf(cpf)
+
+    
+  }
 
 
   minhaLista = [

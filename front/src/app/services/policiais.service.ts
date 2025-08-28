@@ -20,6 +20,18 @@ export class PoliciaisService {
     });
   }
 
+  getPolicialByCpf(cpf: string) {
+    return this.$http.get(`${this.apiUrl}/${cpf}`).toPromise().then(r=>{
+      if(Array.isArray(r)){
+        this.policiaisList = r;
+      }else{
+        this.policiaisList = [r];
+      }
+    }).catch(e=>{
+      alert("Policial não encontrado");
+    });
+  }
+
   createPolicial(policial: any) {
     return this.$http.post(this.apiUrl, policial);
   }
